@@ -1,0 +1,34 @@
+body{
+    margin: 0 10px 0 10px;
+}
+
+.header{
+    background: linear-gradient(to top, rgb(94, 104, 245), rgb(25, 19, 109) );
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+}
+
+.search{
+    display: inline-block
+}
+
+.main{
+    display: inline-block
+
+}
+
+.searchtitle{
+    font-weight: bolder;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 800px;
+    object-fit: cover;
+}
+
+.carousel-item{
+    display: flex;
+    justify-content: center;
+}
