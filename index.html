@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1Kscf_3NgjtZuxEcdx0wDrUQcwaVXN40&libraries=places"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
       rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
@@ -101,10 +102,6 @@
 </div>
 <!-- Map will be appended here -->
 <div id="map"></div>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkdGsW0ip6RE6HWo3OCucEp3QqAfXvh-U&callback=initMap&v=weekly"
-      defer
-    ></script>
 
     <footer class="bg-light text-center text-lg-start">
       <!-- Grid container -->
@@ -146,13 +143,21 @@
       </div>
       <!-- Copyright -->
     </footer>
-    
+
 <script
   src="https://code.jquery.com/jquery-3.6.4.min.js"
   integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
   crossorigin="anonymous"></script>
 <script type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
-<script type="text/javascript" src="./assets/js/script.js"></script>
+  <!-- Autofill -->
+  <script>
+    var input = document.getElementById('citySearch');
+    var autocomplete = new google.maps.places.Autocomplete(input,{types: ['(cities)']});
+    google.maps.event.addListener(autocomplete, 'place_changed', function(){
+       var place = autocomplete.getPlace();
+    })
+  </script>
+  <script type="text/javascript" src="./assets/js/script.js"></script>
 </body>
 </html>
