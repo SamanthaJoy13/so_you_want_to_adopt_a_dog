@@ -85,10 +85,17 @@
   </button>
 </div>
 <!-- Carousel wrapper -->
+
+
+
+
 <div class="search">
   <div class="searchtitle"> Search for a City: <input id="citySearch" type="text"></div>
   <button type="button" id="searchBtn" class="btn btn-primary">Search</button>
 </div>
+
+<div id = "resultsContainer"></div>
+
 
     
 
@@ -104,10 +111,14 @@
 
 
 <!-- Map will be appended here -->
-<div></div>
+<div id="map"></div>
 
 <footer></footer>
 
+<script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkdGsW0ip6RE6HWo3OCucEp3QqAfXvh-U&callback=initMap&v=weekly"
+      defer
+    ></script>
 <script
   src="https://code.jquery.com/jquery-3.6.4.min.js"
   integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
