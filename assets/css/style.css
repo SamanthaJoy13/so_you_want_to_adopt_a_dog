@@ -1,18 +1,54 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+    background: linear-gradient(to top, rgb(94, 104, 245), rgb(25, 19, 109) );
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+}
+
+.main {
+    display: inline-block;
+}
+
+.carousel-item {
+    display: flex;
+    justify-content: center;
+
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 800px;
+    object-fit: cover;
+}
+
+.search {
+    display: inline-block;
+    font-size: 150%;
+    margin-left: 30%;
+}
+
+.searchtitle {
+    font-weight: bolder;
+}
+
+#citySearch {
+    margin-top: 10%;
+    background-color: aliceblue;
+}
 
 #map {
     margin-top: 4%;
     height: 100%;
-  }
+}
   
-  /* Optional: Makes the sample page fill the window. */
-  html,
-  body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .custom-map-control-button {
+.custom-map-control-button {
     background-color: #fff;
     border: 0;
     border-radius: 2px;
@@ -24,48 +60,7 @@
     height: 40px;
     cursor: pointer;
   }
-  .custom-map-control-button:hover {
+
+.custom-map-control-button:hover {
     background: rgb(235, 235, 235);
   }
-
-#citySearch {
-    margin-top: 10%;
-    background-color: aliceblue;
-}
-
-body{
-    margin: 0 10px 0 10px;
-}
-
-.header{
-    background: linear-gradient(to top, rgb(94, 104, 245), rgb(25, 19, 109) );
-    display: flex;
-    justify-content: center;
-    color: whitesmoke;
-}
-
-.search{
-    display: inline-block;
-    font-size: 150%;
-    margin-left: 30%;
-}
-
-.main{
-    display: inline-block;
-}
-
-.searchtitle{
-    font-weight: bolder;
-}
-
-.carousel-item img {
-    width: 100%;
-    height: 800px;
-    object-fit: cover;
-}
-
-.carousel-item{
-    display: flex;
-    justify-content: center;
-
-}
