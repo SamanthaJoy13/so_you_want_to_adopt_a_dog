@@ -55,7 +55,7 @@ function fetchHotels(requestUrl) {
           return response.json();
         })
         .then(function (data) {}
-      }
+      )}
   
   };
 
