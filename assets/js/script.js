@@ -5,9 +5,9 @@ var searchResult = document.getElementById("resultsContainer");
 var options = {
   method: 'GET',
   headers: {
-    'X-RapidAPI-Key': '4f6bf39e07msh56ee2102870e755p1368b1jsnf22f64243de2',
-    'X-RapidAPI-Host': 'hotels4.p.rapidapi.com'
-  }
+		'X-RapidAPI-Key': '08f0371562mshaace697a3d212cdp1d709djsn42622047c807',
+		'X-RapidAPI-Host': 'priceline-com-provider.p.rapidapi.com'
+	}
 };
 var hotelList = [{}];
 
@@ -18,42 +18,49 @@ function fetchHotels(requestUrl) {
       return response.json();
     })
     .then(function (data) {
+      console.log (data);
       hotelList = [{}];
       var counter = 0;
-      for (let i = 0; i < data.sr.length; i++) {
-        if (data.sr[i].type == 'CITY' && counter < 1) {
-          var currentLat = Number(data.sr[i].coordinates.lat);
-          var currentLong = Number(data.sr[i].coordinates.long);
-          let Obj = {
-            lat: currentLat,
-            long: currentLong
-          }
-          hotelList[0] = Obj;
-          counter++;
-        }
-        if (data.sr[i].type == 'HOTEL') {
+      for (let i = 0; i < data.length; i++) {
+        // if (data.sr[i].type == 'CITY' && counter < 1) {
+        //   var currentLat = Number(data.sr[i].coordinates.lat);
+        //   var currentLong = Number(data.sr[i].coordinates.long);
+        //   let Obj = {
+        //     lat: currentLat,
+        //     long: currentLong
+        //   }
+        //   hotelList[0] = Obj;
+        //   counter++;
+        // }
           // let oneDayCard = document.createElement("div");
           // oneDayCard.innerText = data.sr[i].regionNames.shortName;
           // searchResult.append(oneDayCard);
-          var currentHotelLat = Number(data.sr[i].coordinates.lat);
-          var currentHotelLong = Number(data.sr[i].coordinates.long);
           var myObj = {
-            hotelName: data.sr[i].regionNames.shortName,
-            address: data.sr[i].hotelAddress.street,
-            lat: currentHotelLat,
-            long: currentHotelLong
+            hotelName: data[i].itemName,
+            address: data[i].address,
+            lat: data[i].lat,
+            long: data[i].lon
           }
           hotelList.push(myObj);
-        }
       }
       console.log (hotelList);
       window.initMap = initMap(hotelList);
     }
     )
-}
+
+    function fetchHotelInfo(requestUrl) {
+      fetch(requestUrl, options)
+        .then(function (response) {
+        //  console.log(response);
+          return response.json();
+        })
+        .then(function (data) {}
+      }
+  
+  };
 
 // async function fetchHotels(location) {
-//   const endpoint = 'https://hotels4.p.rapidapi.com/locations/v3/search';
+//   const endpoint = 'https://hotels4.p.rapidapi.com/locations/search';
 //   const params = {
 //     query: location,
 //     locale: 'en_US'
@@ -96,7 +103,7 @@ function fetchHotels(requestUrl) {
 
 function initMap(hotels) {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: hotels[0].lat, lng: hotels[0].long },
+    center: { lat: hotels[1].lat, lng: hotels[1].long },
     zoom: 12,
   });
 
@@ -179,25 +186,19 @@ function initMap(hotels) {
 searchEl.addEventListener("click", function () {
   citySearch = textSearchEl.value;
   var myArr = citySearch.split(',');
-  let cityName = myArr[0]
-  var requestUrl = `https://hotels4.p.rapidapi.com/locations/v3/search?q=${cityName}&locale=en_US&langid=1033&siteid=300000001`;
+  let cityName = myArr[0] +' '+ myArr[1];
+  var requestUrl = `https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations?name=${cityName}&search_type=HOTEL`;
   fetchHotels(requestUrl);
   // .then(data => console.log(data))
   // .catch(error => console.error(error));
-
 });
 
-
-// Get the input field
-  //var input = document.getElementById("myInput");
-
-// Execute a function when the user presses a key on the keyboard
-  //input.addEventListener("keypress", function(event) {
-  // If the user presses the "Enter" key on the keyboard
-    //if (event.key === "Enter") {
+//Execute a function when the user presses a key on the keyboard
+  textSearchEl.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
     // Cancel the default action, if needed
-    //event.preventDefault();
+    event.preventDefault();
     // Trigger the button element with a click
-    //document.getElementById("myBtn").click();
-  //}
-//});
+    searchEl.click();
+  }
+});
