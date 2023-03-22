@@ -11,6 +11,43 @@ var options = {
 };
 var hotelList = [{}];
 
+function displayMap(hotels) {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: hotels[1].lat, lng: hotels[1].long },
+    zoom: 12,
+  });
+
+  for (let i = 1; i < hotels.length; i++) {
+    let position = { lat: hotels[i].lat, lng: hotels[i].long }
+    const contentString =
+      '<div id="content">' +
+      '<div id="siteNotice">' +
+      "</div>" +
+      `<h1 id="firstHeading" class="firstHeading">${hotels[i].hotelName}</h1>` +
+      '<div id="bodyContent">' +
+      `<p><b>Address: ${hotels[i].address}</b></p>` +
+      "</div>" +
+      "</div>";
+    const infowindow = new google.maps.InfoWindow({
+      content: contentString,
+      ariaLabel: hotels[i].hotelName,
+    });
+    const marker = new google.maps.Marker({
+      position: position,
+      map,
+      title: hotels[i].hotelName,
+    });
+    marker.addListener("click", () => {
+      infowindow.open({
+        anchor: marker,
+        map,
+      });
+    });
+  }
+
+  infoWindow = new google.maps.InfoWindow();
+ }
+
 function fetchHotels(requestUrl) {
   fetch(requestUrl, options)
     .then(function (response) {
@@ -44,18 +81,9 @@ function fetchHotels(requestUrl) {
           hotelList.push(myObj);
       }
       console.log (hotelList);
-      window.initMap = initMap(hotelList);
+      window.initMap = displayMap(hotelList);
     }
     )
-
-    function fetchHotelInfo(requestUrl) {
-      fetch(requestUrl, options)
-        .then(function (response) {
-        //  console.log(response);
-          return response.json();
-        })
-        .then(function (data) {}
-      )}
   
   };
 
@@ -99,86 +127,6 @@ function fetchHotels(requestUrl) {
 // }
 
 // map start
-
-
-function initMap(hotels) {
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: hotels[1].lat, lng: hotels[1].long },
-    zoom: 12,
-  });
-
-  for (let i = 1; i < hotels.length; i++) {
-    let position = { lat: hotels[i].lat, lng: hotels[i].long }
-    const contentString =
-      '<div id="content">' +
-      '<div id="siteNotice">' +
-      "</div>" +
-      `<h1 id="firstHeading" class="firstHeading">${hotels[i].hotelName}</h1>` +
-      '<div id="bodyContent">' +
-      `<p><b>Address: ${hotels[i].address}</b></p>` +
-      "</div>" +
-      "</div>";
-    const infowindow = new google.maps.InfoWindow({
-      content: contentString,
-      ariaLabel: hotels[i].hotelName,
-    });
-    const marker = new google.maps.Marker({
-      position: position,
-      map,
-      title: hotels[i].hotelName,
-    });
-    marker.addListener("click", () => {
-      infowindow.open({
-        anchor: marker,
-        map,
-      });
-    });
-  }
-
-  infoWindow = new google.maps.InfoWindow();
-
-//   const locationButton = document.createElement("button");
-
-//   locationButton.textContent = "Pan to Current Location";
-//   locationButton.classList.add("custom-map-control-button");
-//   map.controls[google.maps.ControlPosition.TOP_CENTER].push(
-//     locationButton
-//   );
-//   locationButton.addEventListener("click", () => {
-
-//     if (navigator.geolocation) {
-//       navigator.geolocation.getCurrentPosition(
-//         (position) => {
-//           const pos = {
-//             lat: position.coords.latitude,
-//             lng: position.coords.longitude,
-//           };
-
-//           infoWindow.setPosition(pos);
-//           infoWindow.setContent("Location found.");
-//           infoWindow.open(map);
-//           map.setCenter(pos);
-//         },
-//         () => {
-//           handleLocationError(true, infoWindow, map.getCenter());
-//         }
-//       );
-//     } else {
-//       // Browser doesn't support Geolocation
-//       handleLocationError(false, infoWindow, map.getCenter());
-//     }
-//   });
-// }
-
-// function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-//   infoWindow.setPosition(pos);
-//   infoWindow.setContent(
-//     browserHasGeolocation
-//       ? "Error: The Geolocation service failed."
-//       : "Error: Your browser doesn't support geolocation."
-//   );
-//   infoWindow.open(map);
- }
 
 
 //map end
