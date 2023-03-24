@@ -47,6 +47,10 @@ body {
     margin-top: 4%;
     height: 70%;
 }
+
+#searchBtn {
+    margin-bottom: 0.8%;
+}
   
 .custom-map-control-button {
     background-color: #fff;
