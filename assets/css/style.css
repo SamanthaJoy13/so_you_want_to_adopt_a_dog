@@ -6,65 +6,64 @@ body {
 }
 
 .header {
-    background: linear-gradient(to top, rgb(94, 104, 245), rgb(25, 19, 109) );
-    display: flex;
-    justify-content: center;
-    color: whitesmoke;
+  background: linear-gradient(to top, rgb(94, 104, 245), rgb(25, 19, 109));
+  display: flex;
+  justify-content: center;
+  color: whitesmoke;
 }
 
 .main {
-    display: inline-block;
+  display: inline-block;
 }
 
 .carousel-item {
-    display: flex;
-    justify-content: center;
-
+  display: flex;
+  justify-content: center;
 }
 
 .carousel-item img {
-    width: 100%;
-    height: 800px;
-    object-fit: cover;
+  width: 100%;
+  height: 800px;
+  object-fit: cover;
 }
 
 .search {
-    display: inline-block;
-    font-size: 150%;
-    margin-left: 30%;
+  display: inline-block;
+  font-size: 150%;
+  margin-left: 30%;
 }
 
 .searchtitle {
-    font-weight: bolder;
+  font-weight: bolder;
 }
 
 #citySearch {
-    margin-top: 10%;
-    background-color: aliceblue;
+  margin-top: 10%;
+  background-color: aliceblue;
 }
 
 #map {
-    margin-top: 4%;
-    height: 70%;
+  margin-top: 4%;
+  height: 70%;
 }
 
 #searchBtn {
-    margin-bottom: 0.8%;
+  margin-bottom: 0.8%;
 }
-  
+
 .custom-map-control-button {
-    background-color: #fff;
-    border: 0;
-    border-radius: 2px;
-    box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
-    margin: 10px;
-    padding: 0 0.5em;
-    font: 400 18px Roboto, Arial, sans-serif;
-    overflow: hidden;
-    height: 40px;
-    cursor: pointer;
-  }
+  background-color: #fff;
+  border: 0;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+  margin: 10px;
+  padding: 0 0.5em;
+  font: 400 18px Roboto, Arial, sans-serif;
+  overflow: hidden;
+  height: 40px;
+  cursor: pointer;
+}
 
 .custom-map-control-button:hover {
-    background: rgb(235, 235, 235);
-  }
+  background: rgb(235, 235, 235);
+}

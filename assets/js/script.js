@@ -12,7 +12,6 @@ var hotelList = [{}];
 var searches = JSON.parse(localStorage.getItem("last5Searches")) || {};
 let lastKey;
 
-
 function displayMap(hotels) {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: hotels[1].lat, lng: hotels[1].long },
@@ -46,26 +45,26 @@ function displayMap(hotels) {
         map,
       });
     });
-  //   google.maps.event.addListener(infowindow, 'domready', function() {
-  //     $('.sv').click(function(){
-  //       panorama = new google.maps.StreetViewPanorama(
-  //         document.getElementById("map"),
-  //         {
-  //           position: position,
-  //           pov: { heading: 165, pitch: 0 },
-  //           zoom: 1,
-  //         }
-  //       );           
-  //       google.maps.event.addListener(map.getStreetView(),'visible_changed',function(){
-  //         alert('streetview is ' +(this.getVisible()?'open':'closed'));
-  //      });      
-  //  })
-  // })
+    //   google.maps.event.addListener(infowindow, 'domready', function() {
+    //     $('.sv').click(function(){
+    //       panorama = new google.maps.StreetViewPanorama(
+    //         document.getElementById("map"),
+    //         {
+    //           position: position,
+    //           pov: { heading: 165, pitch: 0 },
+    //           zoom: 1,
+    //         }
+    //       );
+    //       google.maps.event.addListener(map.getStreetView(),'visible_changed',function(){
+    //         alert('streetview is ' +(this.getVisible()?'open':'closed'));
+    //      });
+    //  })
+    // })
   }
   // function toggleStreetView() {
   //   console.log ('hi');
   //   const toggle = panorama.getVisible();
-  
+
   //   if (toggle == false) {
   //     panorama.setVisible(true);
   //   } else {
@@ -106,9 +105,9 @@ function saveLast5Searches() {
   // Update the topCityContainer div with the new searches
   $("#topCityContainer").empty();
   for (const key in searches) {
-      $("#topCityContainer").append(
-        `<button id="x" class = "mt-4 btn">${key}</button>`
-      );
+    $("#topCityContainer").append(
+      `<button id="x" class = "mt-4 btn">${key}</button>`
+    );
   }
 }
 saveLast5Searches();
