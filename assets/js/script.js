@@ -11,7 +11,9 @@ var options = {
 var hotelList = [{}];
 var searches = JSON.parse(localStorage.getItem("last5Searches")) || {};
 let lastKey;
-
+if (Object.keys(searches)[0]){
+fetchHotels(`https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations?name=${Object.keys(searches)[0]}&search_type=HOTEL`);
+};
 function displayMap(hotels) {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: hotels[1].lat, lng: hotels[1].long },
@@ -27,7 +29,6 @@ function displayMap(hotels) {
       `<h1 id="firstHeading" class="firstHeading">${hotels[i].hotelName}</h1>` +
       '<div id="bodyContent">' +
       `<p><b>Address: ${hotels[i].address}</b></p>` +
-      // `<button id="${hotels[i].hotelName}" class="sv"> Click for street view </button>`
       "</div>" +
       "</div>";
     const infowindow = new google.maps.InfoWindow({
@@ -73,12 +74,7 @@ function fetchHotels(requestUrl) {
     });
 }
 
-// map start
-
-//map end
-
 function saveLast5Searches() {
-  // Update the topCityContainer div with the new searches
   $("#topCityContainer").empty();
   for (const key in searches) {
     $("#topCityContainer").append(
@@ -109,12 +105,9 @@ searchEl.addEventListener("click", function () {
   fetchHotels(requestUrl);
 });
 
-//Execute a function when the user presses a key on the keyboard
 textSearchEl.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
-    // Cancel the default action, if needed
     event.preventDefault();
-    // Trigger the button element with a click
     searchEl.click();
   }
 });
