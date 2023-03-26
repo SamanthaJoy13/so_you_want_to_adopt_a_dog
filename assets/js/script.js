@@ -45,32 +45,8 @@ function displayMap(hotels) {
         map,
       });
     });
-    //   google.maps.event.addListener(infowindow, 'domready', function() {
-    //     $('.sv').click(function(){
-    //       panorama = new google.maps.StreetViewPanorama(
-    //         document.getElementById("map"),
-    //         {
-    //           position: position,
-    //           pov: { heading: 165, pitch: 0 },
-    //           zoom: 1,
-    //         }
-    //       );
-    //       google.maps.event.addListener(map.getStreetView(),'visible_changed',function(){
-    //         alert('streetview is ' +(this.getVisible()?'open':'closed'));
-    //      });
-    //  })
-    // })
+ 
   }
-  // function toggleStreetView() {
-  //   console.log ('hi');
-  //   const toggle = panorama.getVisible();
-
-  //   if (toggle == false) {
-  //     panorama.setVisible(true);
-  //   } else {
-  //     panorama.setVisible(false);
-  //   }
-  // }
 
   infoWindow = new google.maps.InfoWindow();
 }
